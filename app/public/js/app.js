@@ -19,16 +19,13 @@ async function sendSuma(e){
         
         //try {
             const data = {op1: value1, op2:value2 }; 
-            const res = await fetch(`${api}/suma`, {method: 'POST', body: JSON.stringify(data), Headers: { 'Content-Type': 'aplication/json'} });
+            const res = await fetch(`${api}/suma`, {method: 'POST', body: JSON.stringify(data), headers: { 'Content-Type': 'application/json'}  });
             const val = await res.json();
             console.log(val);
         //} catch (error) {
         
         //}
-}
-
-
-
+}S
 }
 
 btnSumar.addEventListener('click',sendSuma);

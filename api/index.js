@@ -1,11 +1,13 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 
 const operation = require('./routes/operation');
 
 app.set('port',process.env.PORT || 3001);
 
 app.use(express.json());
+app.use(cors());
 
 app.use('/api/operation',operation);
 

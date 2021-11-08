@@ -9,6 +9,7 @@ const worker = `http://${workerhost}:${workerport}/math/operation`;
 
 router.post('/suma',(req,res) =>{   //OPERATION DEL LADO DEL WORKER
     const {op1,op2} = req.body;
+    console.log(op1, op2);
     const result = Number(op1) + Number(op2);
     res.status(200).json({resultado: result});
 });
