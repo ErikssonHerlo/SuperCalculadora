@@ -1,5 +1,11 @@
 version: '3'
-services: 
+services:
+  worker:
+    build:
+      dockerfile: Dockerfile
+      context: ./worker
+    expose:
+      - "3002" 
   apirest:
     build:
       dockerfile: Dockerfile
@@ -8,11 +14,11 @@ services:
       - ./api/routes:/app/routes 
       - ./api/index.js:/app/index.js
       - ./api/package.json:/app/package.json
-    #enviroment:
-    #  - WORKER_HOST=worker
-    #  - WORKER_PORT=3002
-    #depends_on:
-     # - worker
+    environment:
+      - WORKER_HOST=worker
+      - WORKER_PORT=3002
+    depends_on:
+      - worker
 
   site:
     stdin_open: true
@@ -28,7 +34,7 @@ services:
     depends_on: 
       - site
       - apirest
-      #- worker
+      - worker
     restart: always
     build: 
       dockerfile: Dockerfile
