@@ -5,12 +5,12 @@ services:
       dockerfile: Dockerfile
       context: ./api
     volumes:
-      - ./api/routes:app/routes 
+      - ./api/routes:/app/routes 
       - ./api/index.js:/app/index.js
       - ./api/package.json:/app/package.json
-    enviroment:
-      - WORKER_HOST=worker
-      - WORKER_PORT=3002
+    #enviroment:
+    #  - WORKER_HOST=worker
+    #  - WORKER_PORT=3002
     #depends_on:
      # - worker
 
@@ -34,4 +34,4 @@ services:
       dockerfile: Dockerfile
       context: ./nginx
     ports: 
-      - "80:80"
+      - "8080:8080"
