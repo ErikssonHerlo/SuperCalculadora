@@ -1,0 +1,164 @@
+Pasos para crear un Proyecto en Node Js:
+
+Funcionamiento de este contexto: APP:3000
+*********************************************************************************************************************
+
+Paso 1: Crear carpeta app en la Carpeta Madre (SuperCalculator)
+
+Paso 2: cd app => ubicarnos en esa carpeta 
+
+	=>	SuperCalculadora\app
+
+Paso 3:	npm init -y	=> iniciar el proyecto de node js (-y es para darle si a todo)
+
+Paso 4: se nos mostrara la parte del package.json =>	
+	{
+	  "name": "app",
+	  "version": "1.0.0",
+	  "main": "index.js",
+	  "scripts": {
+	    "test": "echo \"Error: no test specified\" && exit 1"
+	  },
+	  "keywords": [],
+	  "author": "",
+	  "license": "ISC"
+	}
+
+	Nota: la parte de scripts es importante tenerla en cuenta, se modificara luego desde el IDE
+
+Paso 5: npm install express	=> Creacion de un Servidor de Express para levantar la aplicacion
+
+Paso 6: npm install nodemon -D 	=> Creacion del servicio Nodemon para los cambios que se realizan en Desarrollo, utilizado unicamente en el desarrollo.
+
+Paso 7: (Referencia: Nota Paso 4) => Nos vamos al archivo package.json y en el area de scripts se colocan estos datos:
+	
+	 "start": "node index.js",
+   	 "dev": "nodemon index.js"
+	Configuracion para el inicio de la aplicacion con node y la recarga del mismo cuando ocurren cambios a traves de nodemon.
+
+Paso 8: Creacion de las Carpetas public/css, public/js, public/resources, public/views definidas de la siguiente manera
+
+	public/css => css del frontend
+	public/js => js del frontend y *app.js (cualquier nombre)
+		*Nota: Archivo encargado de las funciones async/await utilizadas para comunicar y enviar los datos
+		       obtenidos en el frontend y recibir las respuestas.
+	public/resources => imagenes del frontend
+	public/views => archivos html del frontend
+
+Paso 9: Creacion o Edicion del Archivo index.js a la misma altura del package.json (No se si se crea en un principio o hay que crearlo), aca se configuran todas las rutas atraves de los paths y los archivos .html
+
+Paso 10: Creacion del Archivo Dockerfile a la misma altura del package.json, utilizado mas adelante
+
+Paso 11: Creacion del Proyecto App-3000 Finalizado
+
+Paso 12: npm run dev 	=> Iniciar o correr el Proyecto (Salida de la Terminal):
+
+	> app@1.0.0 dev C:\Users\User\Documents\GitHub\SuperCalculadora\app
+	> nodemon index.js
+
+	[nodemon] 2.0.14
+	[nodemon] to restart at any time, enter `rs`
+	[nodemon] watching path(s): *.*
+	[nodemon] watching extensions: js,mjs,json
+	[nodemon] starting `node app.js index.js`
+	listen on http://localhost:3000
+
+Funcionamiento de este contexto: API:3001
+*********************************************************************************************************************
+
+Paso 1: Crear carpeta api en la Carpeta Madre (SuperCalculator)
+
+Paso 2: cd api => ubicarnos en esa carpeta 
+
+	=>	SuperCalculadora\api
+
+Paso 3:	npm init -y	=> iniciar el proyecto de node js (-y es para darle si a todo)
+
+Paso 4: se nos mostrara la parte del package.json =>	
+	{
+	  "name": "api",
+	  "version": "1.0.0",
+	  "main": "index.js",
+	  "scripts": {
+	    "test": "echo \"Error: no test specified\" && exit 1"
+	  },
+	  "keywords": [],
+	  "author": "",
+	  "license": "ISC"
+	}
+
+	Nota: la parte de scripts es importante tenerla en cuenta, se modificara luego desde el IDE
+
+Paso 5: npm install express	=> Creacion de un Servidor de Express para levantar la aplicacion
+
+Paso 6: npm install nodemon -D 	=> Creacion del servicio Nodemon para los cambios que se realizan en Desarrollo, utilizado unicamente en el desarrollo.
+
+Paso 7: npm install axios 	=> Herramienta utilizada para el proyecto
+
+Paso 8: npm install cors	=> Herramienta utilizada para el proyecto (Opcional Creo / No seguro)
+ 
+Paso 9: npm install redis	=> Herramienta utilizada para el proyecto (Opcional)
+
+Paso 10: (Referencia: Nota Paso 4) => Nos vamos al archivo package.json y en el area de scripts se colocan estos datos:
+	
+	 "start": "node index.js",
+   	 "dev": "nodemon index.js"
+	Configuracion para el inicio de la aplicacion con node y la recarga del mismo cuando ocurren cambios a traves de nodemon.
+
+Paso 11: Creacion de la Carpeta routes y creacion del archivo operation.js
+
+	operation.js 	=> Archivo con la funcionalidad de las funciones de suma y resta con escalabilidad a la app de
+			   worker-3002
+
+
+Paso 12: Creacion o Edicion del Archivo index.js a la misma altura del package.json (No se si se crea en un principio o hay que crearlo), aca se configuran todas las rutas atraves de los paths y los archivos que van a resolver las peticiones
+
+Paso 13: Creacion del Archivo Dockerfile a la misma altura del package.json, utilizado mas adelante
+
+Paso 14: Creacion del Proyecto App-3000 Finalizado
+
+Paso 15: npm run dev 	=> Iniciar o correr el Proyecto (Salida de la Terminal):
+
+	> app@1.0.0 dev C:\Users\User\Documents\GitHub\SuperCalculadora\api
+	> nodemon index.js
+
+	[nodemon] 2.0.14
+	[nodemon] to restart at any time, enter `rs`
+	[nodemon] watching path(s): *.*
+	[nodemon] watching extensions: js,mjs,json
+	[nodemon] starting `node app.js index.js`
+	listen on http://localhost:3001
+
+
+Funcionamiento de este contexto: NGNIX
+*********************************************************************************************************************
+
+Paso 1: Crear carpeta ngnix en la Carpeta Madre (SuperCalculator)
+
+Paso 2: Ubicarnos en esa carpeta
+
+Paso 3: Crear los Archivos default.conf y Dockerfile
+
+Funcionamiento de este contexto: DOCKER COMPOSE
+*********************************************************************************************************************
+
+Paso 1: Crear el archivo docker-compose.yml en la Carpeta Madre (SuperCalculator)
+
+Paso 2: Abrir la terminal, ya sea en visual Studio o afuera, pero en el contexto de la Carpeta Madre
+	
+	/SuperCalculadora	
+
+Paso 3:  docker-compose up -d --build	=> Construccion de las imagenes de cada proyecto en conjunto a Ngnix y su posterior dockerizacion en el puerto 80 o unicamente localhost
+
+Paso 4: docker-compose ps	=> Visualizacion de los Contenedores Activos y el Puerto en el que esta activo
+
+Paso 5: docker-compose down 	=> Desactivar los Contenedores Activos
+
+	Nota: El paso 3, 4 y 5 se realizaran despues de que se corrija o cambie un archivo/linea de codigo del proyecto en cualquiera de sus carpetas.
+
+
+
+
+
+	
+

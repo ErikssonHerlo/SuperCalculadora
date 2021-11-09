@@ -15,8 +15,9 @@ const api = `http://localhost/api/operation`;
 async function sendSuma(e){
     const value1 = inputOperando1.value;
     const value2 = inputOperando2.value;
+
     if(value1 && value2){
-        
+
         try {
             const data = {op1: value1, op2:value2 }; 
             const res = await fetch(`${api}/suma`, {method: 'POST', body: JSON.stringify(data), headers: { 'Content-Type': 'application/json'}  });
@@ -31,7 +32,7 @@ async function sendSuma(e){
             }
             
         } catch (error) {
-            console.log(error);
+            console.error(error);
         }
     }
 }

@@ -7,32 +7,61 @@ const worker = `http://${workerhost}:${workerport}/math/operation`;
 
 
 
-router.post('/suma',(req,res) =>{   //OPERATION DEL LADO DEL WORKER
+router.post('/suma', async (req, res) => {
     const {op1,op2} = req.body;
-    console.log(op1, op2);
-    const result = Number(op1) + Number(op2);
-    res.status(200).json({resultado: result});
+	const params = { op1: op1, op2: op2 };
+
+	try {
+		const resultado = await axios.get(`${worker}/suma`, { port: Number.parseInt(workerport), params });
+        console.log(resultado.data);
+		res.status(200).json(resultado.data);
+	} catch (error) {
+		console.error(error);
+		res.status(200).json({error});
+	}
 });
 
-router.post('/resta',(req,res) =>{   //OPERATION DEL LADO DEL WORKER
+router.post('/resta', async (req, res) => {
     const {op1,op2} = req.body;
-    console.log(op1, op2);
-    const result = Number(op1) - Number(op2);
-    res.status(200).json({resultado: result});
+	const params = { op1: op1, op2: op2 };
+
+	try {
+		const resultado = await axios.get(`${worker}/resta`, { port: Number.parseInt(workerport), params });
+        console.log(resultado.data);
+		res.status(200).json(resultado.data);
+	} catch (error) {
+		console.error(error);
+		res.status(200).json({error});
+	}
 });
 
-router.post('/multiplicacion',(req,res) =>{   //OPERATION DEL LADO DEL WORKER
+router.post('/multiplicacion', async (req, res) => {
     const {op1,op2} = req.body;
-    console.log(op1, op2);
-    const result = Number(op1) * Number(op2);
-    res.status(200).json({resultado: result});
+	const params = { op1: op1, op2: op2 };
+
+	try {
+		const resultado = await axios.get(`${worker}/multiplicacion`, { port: Number.parseInt(workerport), params });
+        console.log(resultado.data);
+		res.status(200).json(resultado.data);
+	} catch (error) {
+		console.error(error);
+		res.status(200).json({error});
+	}
 });
 
-router.post('/division',(req,res) =>{   //OPERATION DEL LADO DEL WORKER
+router.post('/division', async (req, res) => {
     const {op1,op2} = req.body;
-    console.log(op1, op2);
-    const result = Number(op1) / Number(op2);
-    res.status(200).json({resultado: result});
+	const params = { op1: op1, op2: op2 };
+
+	try {
+		const resultado = await axios.get(`${worker}/division`, { port: Number.parseInt(workerport), params });
+        console.log(resultado.data);
+		res.status(200).json(resultado.data);
+	} catch (error) {
+		console.error(error);
+		res.status(200).json({error});
+	}
 });
+
 
 module.exports = router;

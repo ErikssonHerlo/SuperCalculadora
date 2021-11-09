@@ -17,7 +17,7 @@ app.get('/calculadora',(req,res) =>{
  });
 
  app.get('/contactanos',(req,res) =>{
-   // res.sendFile(path.join(__dirname,'./views/contactanos.html'));
+   res.sendFile(path.join(__dirname,'./views/acercade.html'));
  });
 
  app.use((req,res,next) => {
